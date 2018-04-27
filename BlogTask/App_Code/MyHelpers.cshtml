@@ -1,0 +1,19 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Mvc
+@using BlogTask.Models
+
+
+@helper MakeListItems(object obj)
+{
+    <ul class="make-list" >
+        @foreach (var item in obj.GetType().GetProperties())
+        {
+            <li class="list-item">
+                @if ((bool)item.GetValue(obj,null))
+                {
+                    <spam class="item">@item.Name</spam>
+                }
+            </li>
+        }
+    </ul>
+}

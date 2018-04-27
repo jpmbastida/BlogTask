@@ -1,0 +1,44 @@
+﻿@using System.Web.UI.WebControls
+@model BlogTask.Models.ViewPollModel
+
+@{
+    ViewBag.Title = "My Poll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Review your poll</h2>
+
+<div id="polls">
+    @if (Model.PollItems != null)
+    {
+        foreach (var poll in Model.PollItems)
+        {
+            <section class="poll-section">
+                <hr/>
+                <span class="gender">
+                    Gender:
+                    @if (poll.Genre) { <span>Male</span> }
+                    else { <span>Female</span> }
+                </span><br/>
+                <span class="comment">Age: @poll.Age</span><br/>
+                <span class="music-selection">
+                    Preffered music genre: <br/>
+                    @MyHelpers.MakeListItems(@poll.MusicGenres)
+                </span><br/>
+                <span class="kind-of-content">
+                    Content desires:<br/> @MyHelpers.MakeListItems(@poll.Content)
+                </span>
+                <span class="comments-poll">
+                    <strong>Comment:</strong><br/>
+                    @poll.Proposals<br/>
+                </span>
+                <hr/>
+            </section>
+        }
+        <form action="~/Poll/Index", method="get" data_validatable=true>
+            <div id="submit-button">
+                <input id="submit-button-button" type="submit" value="Back"/><br/>
+            </div>
+        </form>
+    }
+</div>

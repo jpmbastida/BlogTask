@@ -1,0 +1,253 @@
+﻿        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style-type:none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+
+         body, html {
+             padding : 0px;
+             margin : 0px;
+             height : 100%;
+         } 
+
+        #wrapper {
+            width:100%;
+            height:100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #header {
+            height:10em;
+            background-color:white;
+            width:100%;
+            margin: 0px;
+        }
+
+        #nav {
+            vertical-align: top;
+            margin-top: 5px;
+            display: inline-block;
+            border-radius: 10px;
+            border: 2px solid ;
+            background-color: #008080;
+            width:calc(30% - 25px);
+            height:100%;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .main-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .container {
+            display: inline-block;
+            height:100%;
+            width:calc(70% - 10px);
+            background-color:white;
+            text-align: justify;
+            padding: 5px;
+            margin: 0px;
+            border: 0px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .side-bar {
+            float: left;
+            height:100%;
+            border-radius: 10px;
+            background-color: black;
+            width:10%;
+            padding: 0px;
+            border: 0px
+        }
+
+        h1 {
+            color: black;
+            font-family: verdana;
+            font-size: 200%;
+        }
+
+        h3 {
+            color: black;
+            font-family: verdana;
+            font-size: 120%;
+        }
+
+        p  {
+            color: black;
+            font-family: courier;
+            font-size: 100%;
+        }
+
+        .link {
+            text-align: center;
+            font-family: verdana;
+            font-size: 100%;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            width: 90%
+        }
+
+        .button-background {
+            background-color: white; 
+            color: black; 
+            border: 2px solid black;
+        }
+
+        .button-background:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+        
+        #footer {
+            padding-left: 10%;
+            margin-bottom: 25px;
+        }
+
+        #message {
+            font-size: 1.2em;
+            padding: 5px;
+            width: 95%;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+        }
+
+        .comment {
+            font-size: 1.1em;
+        }
+
+        .author {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        #author {
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        .time {
+            font-size: 0.9em;
+        }
+
+        .validation-summary-errors {
+            font-weight: bold;
+            color: red;
+        }
+
+        .list-item {
+            list-style-type:none;
+            padding-left: 30%;
+        }
+
+        #header-poll {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px
+        }
+
+        #genre {
+
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+
+        #age {
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+
+        #music-genre {
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+        #music-section {
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+
+        #additional-content {
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+
+        #additiona-content-section {
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+
+        #opinion {
+            font-size: 1.1em;
+            margin-bottom: 10px
+        }
+
+        #Comment {
+            width: 100%;
+        }
+
+        #submit-button {
+            height: 30px;
+            font-size: 16px;
+        }

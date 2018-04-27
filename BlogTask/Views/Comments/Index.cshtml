@@ -1,0 +1,29 @@
+﻿@model BlogTask.Models.ViewCommentModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Visitor's comments</h1>
+<hr/>
+<form method="post" action="/Comments/Index">
+    @Html.ValidationSummary()
+    <br/>
+    Author: <input type="text" id="author" name="author" value="@Model.Author" placeholder="Type your alias"/>
+    <input type="submit" value="Submit"/><br/>
+    Comment:<br/>
+    <textarea id="message" name="comment" rows="5" placeholder="Type your comment here"></textarea><br/>
+</form>
+<div id="comments">
+    @foreach (var comment in Model.AllComments)
+    {
+        <section class="comment-section">
+            <span class ="author">@comment.Author: </span>
+            <span class="comment">@comment.Comment</span>
+            <br />
+            <span class="time">@comment.Time</span>
+        </section>
+    }
+</div>
+

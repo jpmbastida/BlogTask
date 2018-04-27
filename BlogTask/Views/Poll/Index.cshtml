@@ -1,0 +1,56 @@
+﻿@using System.Web.UI.WebControls
+@model BlogTask.Models.ViewPollModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 id="header-poll">Your opinion is important for us!</h2>
+
+@using (Html.BeginForm("Index", "PollResult", FormMethod.Post, new {@class = "poll-result", @id = "resultForm"}))
+{
+    @Html.ValidationSummary()
+    <div id="genre">
+        @Html.Label("Sex: ")
+        @Html.RadioButtonFor(g => g.Genre, true, new {id = "male", Checked = "checked"}) <span id="male-tag">Male</span>
+        @Html.RadioButtonFor(g => g.Genre, false, new {id = "female"}) <span id="female-tag">Female</span>
+    </div>
+    <div id="age">
+        Age: @Html.TextBoxFor(a => a.Age, new {Value = ""})
+    </div>
+    <div id="music-genre">
+        <p id="music-section">What kind of music do you like?<br/></p>
+        <ul>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.House, "House") <span id="classic-tag">House</span></li>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.Classic, "Classic") <span id="classic-tag">Classic</span></li>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.Country, "Country") <span id="country-tag">Country</span></li>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.Rock, "Rock") <span id="rock-tag">Rock</span></li>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.Pop, "Pop") <span id="pop-tag">Pop</span></li>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.Ethnic, "Ethnic") <span id="ethnic-tag">Ethnic</span></li>
+            <li>@Html.CheckBoxFor(m => m.MusicGenres.Rap, "Rap") <span id="rap-tag">Rap</span></li>
+        </ul>
+    </div>
+    <div id="additional-content">
+        <p id="additiona-content-section">What kind of content would you like to read about?<br/></p>
+        <ul>
+            <li>@Html.CheckBoxFor(c => c.Content.Tech, "Tech") <span id="tech-tag">Tech</span></li>
+            <li>@Html.CheckBoxFor(c => c.Content.Science, "Science") <span id="science-tag">Science</span></li>
+            <li>@Html.CheckBoxFor(c => c.Content.World, "World") <span id="world-tag">World</span></li>
+            <li>@Html.CheckBoxFor(c => c.Content.Economics, "Economics") <span id="econimics-tag">Economics</span></li>
+            <li>@Html.CheckBoxFor(c => c.Content.Fashion, "Fashion") <span id="classic-tag">Fashion</span></li>
+            <li>@Html.CheckBoxFor(c => c.Content.Spectacles, "Spectacles") <span id="spectacles-tag">Spectacles</span></li>
+        </ul>
+    </div>
+    <div id="opinion">
+        <p id="opinion-section">Tell us what you would like to include in the Blog:<br/></p>
+        @Html.TextAreaFor(o => o.Proposals, new {id = "Comment", rows = "5", Placeholder = "Type your comment here"})
+    </div>
+    <div id="submit-button-section">
+        <input  id="submit-button" type="submit" value="Submit"/><br/>
+    </div>
+}
+
+
+
+
