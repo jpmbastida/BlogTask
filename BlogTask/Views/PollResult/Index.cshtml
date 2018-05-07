@@ -1,5 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@model BlogTask.Models.ViewPollModel
+@model Blog.Entities.Polls.ViewModels.PollViewModel
 
 @{
     ViewBag.Title = "My Poll";
@@ -11,7 +11,7 @@
 <div id="polls">
     @if (Model.PollItems != null)
     {
-        foreach (var poll in Model.PollItems)
+        foreach (var poll in Model.PollItems.OrderByDescending(e => e.Id))
         {
             <section class="poll-section">
                 <hr/>

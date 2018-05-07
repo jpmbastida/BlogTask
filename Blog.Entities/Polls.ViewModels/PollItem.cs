@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BlogTask.Controllers;
-using BlogTask.Models;
+using Blog.Entities.Contents;
 
-namespace BlogTask.Models
+namespace Blog.Entities.Polls.ViewModels
 {
     public class PollItem
     {
+        public int Id { get; set; }
         public bool Genre { get; set; }
         public int Age { get; set; }
         public MusicGenres MusicGenres { get; set; }

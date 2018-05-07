@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BlogTask.Models;
+using Blog.Data.Repositories;
+using Blog.Entities.Articles.ViewModels;
 
 namespace BlogTask.Controllers
 {
@@ -12,8 +13,8 @@ namespace BlogTask.Controllers
         // GET: Main
         public ActionResult Index()
         {
-            MyArticle myarticle = new MyArticle();
-            return View(myarticle.myArticles);
+            var repo = new ArticlesRepository();
+            return View(repo.GetArticles());
         }
     }
 }

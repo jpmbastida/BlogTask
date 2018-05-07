@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlogTask.Models
+namespace Blog.Entities.Comments.ViewModels
 {
     public class CommentItem
     {

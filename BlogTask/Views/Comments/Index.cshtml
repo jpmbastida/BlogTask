@@ -1,4 +1,4 @@
-﻿@model BlogTask.Models.ViewCommentModel
+﻿@model Blog.Entities.Comments.ViewModels.CommentViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -8,15 +8,17 @@
 <h1>Visitor's comments</h1>
 <hr/>
 <form method="post" action="/Comments/Index">
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     <br/>
     Author: <input type="text" id="author" name="author" value="@Model.Author" placeholder="Type your alias"/>
     <input type="submit" value="Submit"/><br/>
     Comment:<br/>
     <textarea id="message" name="comment" rows="5" placeholder="Type your comment here"></textarea><br/>
+    @Html.ValidationMessageFor(model => model.Comment)
 </form>
 <div id="comments">
-    @foreach (var comment in Model.AllComments)
+    @foreach (var comment in Model.AllComments.OrderByDescending(c => c.Time))
     {
         <section class="comment-section">
             <span class ="author">@comment.Author: </span>

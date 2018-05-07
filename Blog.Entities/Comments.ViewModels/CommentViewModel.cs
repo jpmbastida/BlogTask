@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlogTask.Models
+namespace Blog.Entities.Comments.ViewModels
 {
-    public class ViewCommentModel : IValidatableObject
+    public class CommentViewModel : IValidatableObject
     {
-        public List<CommentItem> AllComments { get; set; }
-        public string Comment { get; set; }
+        public int CommentId { get; set; }
         public string Author { get; set; }
+        public DateTime Time { get; set; }
+        public string Comment { get; set; }
+
+        public List<CommentItem> AllComments { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace BlogTask.Models
+namespace Blog.Entities.Articles
 {
-    public class Article
+    public class Article : BaseEntity
     {
-        public string AuthorName { get; set; }
-        public DateTime PublishedTime { get; set; }
         public string ArticleTitle { get; set; }
+
+        [Column(TypeName = "VARCHAR")]
         public string ArticleBody { get; set; }
     }
 }

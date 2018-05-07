@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BlogTask.Models;
+using Blog.Data.Repositories;
+using Blog.Entities.Comments.ViewModels;
 
 namespace BlogTask.Controllers
 {
@@ -12,22 +13,22 @@ namespace BlogTask.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewCommentModel vCommentModel = new ViewCommentModel {AllComments = Comment.listComments, Author = ""};
-            return View(vCommentModel);
+            var repo = new CommentsRepository();
+            return View(repo.GetAll());
         }
 
         [HttpPost]
-        public ActionResult Index(ViewCommentModel vComment)
+        public ActionResult Index([Bind(Include = "Author, Time, Comment")] CommentViewModel vComment)
         {
+            var repo = new CommentsRepository();
             if (ModelState.IsValid)
             {
-                CommentItem comment = new CommentItem() {Comment = vComment.Comment, Author = vComment.Author};
-                Comment.AddComment(comment);
-                vComment.Comment = "";
-                vComment.Author = "";
+                if (repo.SaveComment(vComment))
+                {
+                    return View(repo.GetAll());
+                }
             }
-            vComment.AllComments = Comment.listComments;
-            return View(vComment);
+           return View(repo.GetAll());
         }
     }
 }
