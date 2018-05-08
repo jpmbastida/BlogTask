@@ -8,6 +8,10 @@ using System.Web;
 
 namespace Blog.Entities.Articles
 {
+    /// <summary>
+    /// Usage: 
+    /// This class <c>Article</c> implements the article data model.
+    /// </summary>
     public class Article : BaseEntity
     {
         public string ArticleTitle { get; set; }

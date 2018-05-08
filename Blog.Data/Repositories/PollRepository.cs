@@ -6,8 +6,19 @@ using Blog.Entities.Polls.ViewModels;
 
 namespace Blog.Data.Repositories
 {
+    /// <summary>
+    /// Usage: 
+    /// Implements the Repository for Polls.
+    /// This repository includes methods <see cref="GetAll()"/> and <see cref="SavePoll(PollViewModel)"/> for obtaining all Polls and Adding a new Poll.
+    /// </summary>
     public class PollRepository
     {
+        /// <summary>
+        /// Usage: 
+        /// Method for obtaining all Polls.
+        /// <see cref="GetAll()"/> 
+        /// </summary>
+        /// <returns>PollViecModel.</returns>
         public PollViewModel GetAll()
         {
             using (var context = new BlogContext())
@@ -40,13 +51,19 @@ namespace Blog.Data.Repositories
             return null;
         }
 
-        public bool SaveComment(PollViewModel vPoll)
+        /// <summary>
+        /// Usage: 
+        /// Method for saving a Polls.
+        /// <see cref="SavePoll(PollViewModel)"/> 
+        /// </summary>
+        /// <returns>A bool.</returns>
+        /// <param name="vPoll">The Poll model from view.</param>
+        public bool SavePoll(PollViewModel vPoll)
         {
             if (vPoll == null) return false;
             using (var contex = new BlogContext())
             {
                 contex.MusicGenres.Add(vPoll.MusicGenres);
-                contex.SaveChanges();
                 contex.KindOfContents.Add(vPoll.Content);
                 contex.SaveChanges();
 

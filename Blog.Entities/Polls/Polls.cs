@@ -8,6 +8,10 @@ using System.Web;
 
 namespace Blog.Entities.Polls
 {
+    /// <summary>
+    /// Usage: 
+    /// This class <c>Polls</c> implements the polls data model.
+    /// </summary>
     public class Polls
     {
         [Key]

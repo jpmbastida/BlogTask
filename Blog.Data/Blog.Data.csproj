@@ -95,9 +95,7 @@
       <Name>Blog.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805071050204_InitialMigration.resx">
       <DependentUpon>201805071050204_InitialMigration.cs</DependentUpon>

@@ -6,6 +6,10 @@ using System.Web;
 
 namespace Blog.Entities.Contents
 {
+    /// <summary>
+    /// Usage: 
+    /// This class <c>KindOfContents</c> implements the types of contents data model for Polls.
+    /// </summary>
     public class KindOfContents
     {
         [Key]

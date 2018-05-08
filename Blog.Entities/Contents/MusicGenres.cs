@@ -6,6 +6,10 @@ using System.Web;
 
 namespace Blog.Entities.Contents
 {
+    /// <summary>
+    /// Usage: 
+    /// This class <c>MusicGenres</c> implements the types of music data model for Polls.
+    /// </summary>
     public class MusicGenres
     {
         [Key]

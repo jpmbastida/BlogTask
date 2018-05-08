@@ -6,8 +6,19 @@ using Blog.Entities.Articles.ViewModels;
 
 namespace Blog.Data.Repositories
 {
+    /// <summary>
+    /// Usage: 
+    /// Implements the Repository for Polls
+    /// This repository includes a method <see cref="GetArticles()"/> for obtaining all articles to show.
+    /// </summary>
     public class ArticlesRepository
     {
+        /// <summary>
+        /// Usage: 
+        /// Method for obtaining all Articles to show.
+        /// <see cref="GetArticles()"/> 
+        /// </summary>
+        /// <returns>A list of ArticlesViewModel.</returns>
         public List<ArticleViewModel> GetArticles()
         {
             using (var context = new BlogContext())

@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Entities.Articles.ViewModels
 {
+    /// <summary>
+    /// Usage: 
+    /// This class <c>ArticleViewModel</c> implements the article data model for the View.
+    /// </summary>
     public class ArticleViewModel
     {
         public int ArticleId { get; set; }
@@ -20,7 +24,5 @@ namespace Blog.Entities.Articles.ViewModels
 
         [Display(Name = "Article")]
         public string ArticleBody { get; set; }
-
-        public List<Article> AllArticles = new List<Article>();
     }
 }

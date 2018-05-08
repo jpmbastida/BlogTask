@@ -6,6 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blog.Entities.Polls.ViewModels
 {
+    /// <summary>
+    /// Usage: 
+    /// This class <c>PollViewModel</c> implements the poll data model for the View with validation for <see cref="Age"/>
+    /// and <see cref="Proposals"/>.
+    /// </summary>
     public class PollViewModel : IValidatableObject
     {
         public Guid PollId { get; set; }
