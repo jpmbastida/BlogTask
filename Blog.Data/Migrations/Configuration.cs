@@ -10,14 +10,14 @@ namespace Blog.Data.Migrations
 {
 
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Blog.Data.Context.BlogContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Context.BlogContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Blog.Data.Context.BlogContext context)
+        protected override void Seed(Context.BlogContext context)
         {
             var articles = new List<Article>
             {
@@ -81,3 +81,4 @@ namespace Blog.Data.Migrations
         }
     }
 }
+

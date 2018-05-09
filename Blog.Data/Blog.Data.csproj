@@ -68,6 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201805091034131_InitialMigration1.cs" />
+    <Compile Include="Migrations\201805091034131_InitialMigration1.Designer.cs">
+      <DependentUpon>201805091034131_InitialMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ArticlesRepository.cs" />
     <Compile Include="Context\BlogContext.cs" />
     <Compile Include="Migrations\201805071050204_InitialMigration.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805071136251_BlogContext.resx">
       <DependentUpon>201805071136251_BlogContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805091034131_InitialMigration1.resx">
+      <DependentUpon>201805091034131_InitialMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

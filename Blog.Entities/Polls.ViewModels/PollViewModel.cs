@@ -13,13 +13,14 @@ namespace Blog.Entities.Polls.ViewModels
     /// </summary>
     public class PollViewModel : IValidatableObject
     {
-        public Guid PollId { get; set; }
+        public int PollId { get; set; }
         public bool Genre { get; set; }
         [Range(1,120)]
         public int Age { get; set; }
         public MusicGenres MusicGenres { get; set; }
         public KindOfContents Content { get; set; }
         public string Proposals { get; set; }
+
         public List<PollItem> PollItems { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

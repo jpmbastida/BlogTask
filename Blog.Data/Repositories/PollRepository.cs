@@ -39,8 +39,8 @@ namespace Blog.Data.Repositories
                                 Genre = poll.Genre,
                                 Age = poll.Age,
                                 Proposals = poll.Proposals,
-                                MusicGenres = context.MusicGenres.Find(poll.MusicGenresId),
-                                Content = context.KindOfContents.Find(poll.KindOfContentsId)
+                                MusicGenres = poll.MusicGenres,
+                                Content = poll.Content
                             }
                         );
                     }
@@ -60,21 +60,18 @@ namespace Blog.Data.Repositories
         /// <param name="vPoll">The Poll model from view.</param>
         public bool SavePoll(PollViewModel vPoll)
         {
+            var poll = new Polls
+            {
+                Genre = vPoll.Genre,
+                Age = vPoll.Age,
+                Proposals = vPoll.Proposals,
+                Content = vPoll.Content,
+                MusicGenres = vPoll.MusicGenres
+            };
+
             if (vPoll == null) return false;
             using (var contex = new BlogContext())
             {
-                contex.MusicGenres.Add(vPoll.MusicGenres);
-                contex.KindOfContents.Add(vPoll.Content);
-                contex.SaveChanges();
-
-                var poll = new Polls()
-                {
-                    Genre = vPoll.Genre,
-                    Age = vPoll.Age,
-                    Proposals = vPoll.Proposals,
-                    MusicGenresId = contex.MusicGenres.Max(e => e.MusicGenresId),
-                    KindOfContentsId = contex.KindOfContents.Max(e => e.KindOfContentsId)
-                };
                 contex.Polls.Add(poll);
                 contex.SaveChanges();
                 return true;

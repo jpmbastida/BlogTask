@@ -18,9 +18,9 @@ namespace Blog.Entities.Polls
         public int PollId { get; set; }
         public bool Genre { get; set; }
         public int Age { get; set; }
-        [ForeignKey("MusicGenres")]
+        [ForeignKey(nameof(MusicGenres))]
         public int MusicGenresId { get; set; }
-        [ForeignKey("Content")]
+        [ForeignKey(nameof(Content))]
         public int KindOfContentsId { get; set; }
         public string Proposals { get; set; }
 

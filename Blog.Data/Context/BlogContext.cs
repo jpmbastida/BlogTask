@@ -26,8 +26,6 @@ namespace Blog.Data.Context
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Polls> Polls { get; set; }
-        public DbSet<MusicGenres> MusicGenres { get; set; }
-        public DbSet<KindOfContents> KindOfContents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
