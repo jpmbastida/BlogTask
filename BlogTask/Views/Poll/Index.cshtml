@@ -1,5 +1,4 @@
-﻿@using System.Web.UI.WebControls
-@model Blog.Entities.Polls.ViewModels.PollViewModel
+﻿@model Blog.Entities.Polls.ViewModels.PollViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -8,7 +7,7 @@
 
 <h2 id="header-poll">Your opinion is important for us!</h2>
 
-@using (Html.BeginForm("Index", "PollResult", FormMethod.Post, new {@class = "poll-result", @id = "resultForm"}))
+@using (Html.BeginForm("Index", "PollResult", FormMethod.Post, new {@class = "poll-result", id = "resultForm"}))
 {
     @Html.ValidationSummary()
     <div id="genre">
@@ -47,7 +46,7 @@
         @Html.TextAreaFor(o => o.Proposals, new {id = "Comment", rows = "5", Placeholder = "Type your comment here"})
     </div>
     <div id="submit-button-section">
-        <input  id="submit-button" type="submit" value="Submit"/><br/>
+        <input  id="submit-button" class="button-poll button-poll-background" type="submit" value="Submit"/><br/>
     </div>
 }
 

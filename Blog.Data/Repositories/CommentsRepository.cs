@@ -25,28 +25,23 @@ namespace Blog.Data.Repositories
             using (var context = new BlogContext())
             {
                 CommentViewModel commentsToDisplay = new CommentViewModel();
-                List<Comment> comments = new List<Comment>();
-                comments = context.Comments.ToList();
+                var comments = context.Comments.ToList();
 
-                if (comments != null)
+                List<CommentItem> allComments = new List<CommentItem>();
+                foreach (var comment in comments)
                 {
-                    List<CommentItem> allComments = new List<CommentItem>();
-                    foreach (var comment in comments)
-                    {
-                        allComments.Add(
-                            new CommentItem()
-                            {
-                                Author = comment.Author,
-                                Time = comment.Time,
-                                Comment = comment.CommentBody
-                            }
-                        );
-                    }
-                    commentsToDisplay.AllComments = allComments;
-                    return commentsToDisplay;
+                    allComments.Add(
+                        new CommentItem()
+                        {
+                            Author = comment.Author,
+                            Time = comment.Time,
+                            Comment = comment.CommentBody
+                        }
+                    );
                 }
+                commentsToDisplay.AllComments = allComments;
+                return commentsToDisplay;
             }
-            return null;
         }
 
         /// <summary>
@@ -58,7 +53,11 @@ namespace Blog.Data.Repositories
         /// <param name="vComment">The Comment model from view.</param>
         public bool SaveComment(CommentViewModel vComment)
         {
-            if (vComment == null) return false;
+            if (vComment == null)
+            {
+                return false;
+            }
+
             using (var contex = new BlogContext())
             {
                 var comment = new Comment()

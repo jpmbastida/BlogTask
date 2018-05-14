@@ -1,5 +1,4 @@
-﻿@using System.Web.UI.WebControls
-@model Blog.Entities.Polls.ViewModels.PollViewModel
+﻿@model Blog.Entities.Polls.ViewModels.PollViewModel
 
 @{
     ViewBag.Title = "My Poll";
@@ -7,38 +6,47 @@
 }
 
 <h2>Review your poll</h2>
+<div>
+    @using (Html.BeginForm("Index", "Poll", FormMethod.Get, new { data_validatable = true }))
+    {
+        <div id="submit-button">
+            <input id="submit-button" type="submit" class="button-poll button-poll-background" value="Back"/><br/>
+        </div>
+    }
+</div>
 
 <div id="polls">
     @if (Model.PollItems != null)
     {
         foreach (var poll in Model.PollItems.OrderByDescending(e => e.Id))
         {
-            <section class="poll-section">
+            <section>
                 <hr/>
-                <span class="gender">
+                <span>
                     Gender:
-                    @if (poll.Genre) { <span>Male</span> }
-                    else { <span>Female</span> }
+                    @if (poll.Genre == true)
+                    {
+                        <span>Male</span>
+                    }
+                    else
+                    {
+                        <span>Female</span>
+                    }
                 </span><br/>
                 <span class="comment">Age: @poll.Age</span><br/>
-                <span class="music-selection">
+                <span>
                     Preffered music genre: <br/>
-                    @MyHelpers.MakeListItems(@poll.MusicGenres)
+                    @MyHelpers.MakeListItems(poll.MusicGenres)
                 </span><br/>
-                <span class="kind-of-content">
-                    Content desires:<br/> @MyHelpers.MakeListItems(@poll.Content)
+                <span>
+                    Content desires:<br/> @MyHelpers.MakeListItems(poll.Content)
                 </span>
-                <span class="comments-poll">
+                <span>
                     <strong>Comment:</strong><br/>
                     @poll.Proposals<br/>
                 </span>
                 <hr/>
             </section>
         }
-        <form action="~/Poll/Index", method="get" data_validatable=true>
-            <div id="submit-button">
-                <input id="submit-button-button" type="submit" value="Back"/><br/>
-            </div>
-        </form>
     }
 </div>

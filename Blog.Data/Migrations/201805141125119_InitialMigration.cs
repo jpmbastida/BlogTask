@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace Blog.Data.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialMigration : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@ namespace Blog.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ArticleTitle = c.String(maxLength: 50),
+                        ArticleTitle = c.String(),
                         ArticleBody = c.String(maxLength: 8000, unicode: false),
                         Author = c.String(maxLength: 50),
                         Time = c.DateTime(nullable: false),
@@ -29,6 +28,23 @@ namespace Blog.Data.Migrations
                         Time = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Polls",
+                c => new
+                    {
+                        PollId = c.Int(nullable: false, identity: true),
+                        Genre = c.Boolean(nullable: false),
+                        Age = c.Int(nullable: false),
+                        MusicGenresId = c.Int(nullable: false),
+                        KindOfContentsId = c.Int(nullable: false),
+                        Proposals = c.String(),
+                    })
+                .PrimaryKey(t => t.PollId)
+                .ForeignKey("dbo.KindOfContents", t => t.KindOfContentsId, cascadeDelete: true)
+                .ForeignKey("dbo.MusicGenres", t => t.MusicGenresId, cascadeDelete: true)
+                .Index(t => t.MusicGenresId)
+                .Index(t => t.KindOfContentsId);
             
             CreateTable(
                 "dbo.KindOfContents",
@@ -60,21 +76,17 @@ namespace Blog.Data.Migrations
                 .PrimaryKey(t => t.MusicGenresId);
             
             CreateTable(
-                "dbo.Polls",
+                "dbo.PublicPoll",
                 c => new
                     {
-                        PollId = c.Int(nullable: false, identity: true),
-                        Genre = c.Boolean(nullable: false),
-                        Age = c.Int(nullable: false),
-                        MusicGenresId = c.Int(nullable: false),
-                        KindOfContentsId = c.Int(nullable: false),
-                        Proposals = c.String(),
+                        Id = c.Int(nullable: false, identity: true),
+                        Tech = c.Int(nullable: false),
+                        Science = c.Int(nullable: false),
+                        Fashion = c.Int(nullable: false),
+                        Photography = c.Int(nullable: false),
+                        Weather = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.PollId)
-                .ForeignKey("dbo.KindOfContents", t => t.KindOfContentsId, cascadeDelete: true)
-                .ForeignKey("dbo.MusicGenres", t => t.MusicGenresId, cascadeDelete: true)
-                .Index(t => t.MusicGenresId)
-                .Index(t => t.KindOfContentsId);
+                .PrimaryKey(t => t.Id);
             
         }
         
@@ -84,9 +96,10 @@ namespace Blog.Data.Migrations
             DropForeignKey("dbo.Polls", "KindOfContentsId", "dbo.KindOfContents");
             DropIndex("dbo.Polls", new[] { "KindOfContentsId" });
             DropIndex("dbo.Polls", new[] { "MusicGenresId" });
-            DropTable("dbo.Polls");
+            DropTable("dbo.PublicPoll");
             DropTable("dbo.MusicGenres");
             DropTable("dbo.KindOfContents");
+            DropTable("dbo.Polls");
             DropTable("dbo.Comment");
             DropTable("dbo.Article");
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Blog.Entities.Contents;
+﻿using Blog.Entities.Contents;
 
 namespace Blog.Entities.Polls.ViewModels
 {

@@ -124,6 +124,7 @@
     <Content Include="App_Code\MyHelpers.cshtml" />
     <Content Include="Views\Poll\Index.cshtml" />
     <Content Include="Views\PollResult\Index.cshtml" />
+    <Content Include="Views\Home\ShowSelectedArticle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

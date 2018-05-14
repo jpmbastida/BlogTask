@@ -24,7 +24,7 @@ namespace BlogTask.Controllers
                     return View(repo.GetAll());
                 }
             }
-           return View(repo.GetAll());
+            return View(repo.GetAll());
         }
     }
 }

@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Entities.Comments.ViewModels
 {
+    /// <inheritdoc />
     /// <summary>
     /// Usage: 
-    /// This class <c>PollViewModel</c> implements the poll data model for the View with validation for <see cref="Comment"/>.
+    /// This class <c>PollViewModel</c> implements the poll data model for the View with validation for <see cref="P:Blog.Entities.Comments.ViewModels.CommentViewModel.Comment" />.
     /// </summary>
     public class CommentViewModel : IValidatableObject
     {

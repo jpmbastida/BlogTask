@@ -24,31 +24,26 @@ namespace Blog.Data.Repositories
             using (var context = new BlogContext())
             {
                 PollViewModel pollsToDisplay = new PollViewModel();
-                List<Polls> polls = new List<Polls>();
-                polls = context.Polls.ToList();
+                var polls = context.Polls.ToList();
 
-                if (polls != null)
+                List<PollItem> allPolls = new List<PollItem>();
+                foreach (var poll in polls)
                 {
-                    List<PollItem> allPolls = new List<PollItem>();
-                    foreach (var poll in polls)
-                    {
-                        allPolls.Add(
-                            new PollItem()
-                            {
-                                Id = poll.PollId,
-                                Genre = poll.Genre,
-                                Age = poll.Age,
-                                Proposals = poll.Proposals,
-                                MusicGenres = poll.MusicGenres,
-                                Content = poll.Content
-                            }
-                        );
-                    }
-                    pollsToDisplay.PollItems = allPolls;
-                    return pollsToDisplay;
+                    allPolls.Add(
+                        new PollItem()
+                        {
+                            Id = poll.PollId,
+                            Genre = poll.Genre,
+                            Age = poll.Age,
+                            Proposals = poll.Proposals,
+                            MusicGenres = poll.MusicGenres,
+                            Content = poll.Content
+                        }
+                    );
                 }
+                pollsToDisplay.PollItems = allPolls;
+                return pollsToDisplay;
             }
-            return null;
         }
 
         /// <summary>
@@ -69,7 +64,6 @@ namespace Blog.Data.Repositories
                 MusicGenres = vPoll.MusicGenres
             };
 
-            if (vPoll == null) return false;
             using (var contex = new BlogContext())
             {
                 contex.Polls.Add(poll);

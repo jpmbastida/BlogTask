@@ -1,0 +1,26 @@
+﻿@model Blog.Entities.Articles.ViewModels.ArticleFullViewModel
+@{
+    ViewBag.Title = "Show Article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="article">
+    <h1>
+        <b>@Model.Article.ArticleTitle<br></b>
+    </h1>
+    <hr>
+    <div>Keywords: @foreach (var word in Model.HashtagsList)
+                   {
+                       <span><a href="https://www.google.com/search?q=@word.HashtagWord">@(word.HashtagWord)</a>(@word.CountTags) </span>
+                   }
+        </div>
+    <hr />
+    <h3>
+        @Model.Article.Author&copy;, @Model.Article.Time<br>
+    </h3>
+    <p>
+        <br>@Html.Raw(Model.Article.ArticleBody)
+    </p>
+</div>
+
+

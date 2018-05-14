@@ -1,12 +1,7 @@
-﻿@using System.Web.Mvc.Html
-@using System.Web.Mvc
-@using Blog.Entities.Contents
-
-@helper MakeListItems(object obj)
+﻿@helper MakeListItems(object obj)
     {
-
         var isEmpty = true;
-        <ul class="make-list">
+        <ul>
             @foreach (var item in obj.GetType().GetProperties())
             {
                 if(item.PropertyType == typeof(bool))
@@ -14,7 +9,7 @@
                     if((bool) item.GetValue(obj, null))
                     {
                         <li class="list-item">
-                            <spam class="item" > @item.Name </spam>
+                            <spam> @item.Name </spam>
                         </li>
                         isEmpty = false;
                     }

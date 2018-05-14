@@ -1,15 +1,14 @@
-﻿using System;
-using Blog.Entities.Contents;
+﻿using Blog.Entities.Contents;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blog.Entities.Polls.ViewModels
 {
+    /// <inheritdoc />
     /// <summary>
     /// Usage: 
-    /// This class <c>PollViewModel</c> implements the poll data model for the View with validation for <see cref="Age"/>
-    /// and <see cref="Proposals"/>.
+    /// This class <c>PollViewModel</c> implements the poll data model for the View with validation for <see cref="P:Blog.Entities.Polls.ViewModels.PollViewModel.Age" />
+    /// and <see cref="P:Blog.Entities.Polls.ViewModels.PollViewModel.Proposals" />.
     /// </summary>
     public class PollViewModel : IValidatableObject
     {

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using Blog.Entities.PublicPolls;
 
 namespace Blog.Entities.Articles.ViewModels
 {
@@ -10,19 +9,8 @@ namespace Blog.Entities.Articles.ViewModels
     /// </summary>
     public class ArticleViewModel
     {
-        public int ArticleId { get; set; }
+        public PublicPoll PublicPolls { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-        public string Author { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime Time { get; set; }
-
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-        [Display(Name = "Title")]
-        public string ArticleTitle { get; set; }
-
-        [Display(Name = "Article")]
-        public string ArticleBody { get; set; }
+        public List<ArticleItem> ArticleItems = new List<ArticleItem>();
     }
 }

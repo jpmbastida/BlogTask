@@ -1,23 +1,78 @@
-﻿@model IEnumerable<Blog.Entities.Articles.ViewModels.ArticleViewModel>
+﻿@model Blog.Entities.Articles.ViewModels.ArticleViewModel
 
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (var article in Model)
+@foreach (var article in Model.ArticleItems)
 {
-    <h1>
-        <b>@article.ArticleTitle<br></b>
-    </h1>
-    <hr>
-    <h3>
-        @article.Author&copy;, @article.Time<br>
-    </h3>
-    <p>
-        <br>@Html.Raw(article.ArticleBody)
-    </p>
-    <hr/>
+
+    <div id="article">
+        <h1>
+            <b>@article.ArticleTitle<br></b>
+        </h1>
+        <hr>
+        <h3>
+            @article.Author&copy;, @article.Time<br>
+        </h3>
+        <p>
+            <br>@Html.Raw(article.ArticleBody)
+        </p>
+    </div>
+    <div class="fade-out"></div>
+    using (Html.BeginForm("ShowSelectedArticle", "Home", new { id = article.ArticleId }, FormMethod.Post, new { id = "selectedArticle", target = "_blank" }))
+    {
+        <div>
+            <button class="button-more button-background-more">+ Show more...</button>
+        </div>
+    }
+    <hr />
+    <hr />
+    <hr />
 }
 
-
+@section Poll
+{
+    <div class="poll">
+        Which content do you prefer?
+        @using (Html.BeginForm("UpdatePoll", "Home", FormMethod.Post))
+        {
+            <div class="choices">
+                <ul>
+                    <li>@Html.RadioButton("poll", "Tech")Tech</li>
+                    <li><label>@Html.RadioButton("poll", "Science")Science</label></li>
+                    <li><label>@Html.RadioButton("poll", "Fashion")Fashion</label></li>
+                    <li><label>@Html.RadioButton("poll", "Photography")Photography</label></li>
+                    <li><label>@Html.RadioButton("poll", "Weather")Weather</label></li>
+                </ul>
+            </div>
+            <div>
+                <input type="submit" class="button-poll button-poll-background" value="Submit your choice" />
+            </div>
+         }
+    </div>
+    <div class="poll-results">
+        <span id="poll-state">Poll state:</span>
+        <div class="choices-container">
+            <div class="choices-tags">
+                <ul>
+                    <li>Tech:</li>
+                    <li>Science: </li>
+                    <li>Fashion: </li>
+                    <li>Photography:</li>
+                    <li>Weather:</li>
+                </ul>
+            </div>
+            <div class="choices-results">
+                <ul>
+                    <li>@Model.PublicPolls.Tech vote(s)</li>
+                    <li>@Model.PublicPolls.Science vote(s)</li>
+                    <li>@Model.PublicPolls.Fashion vote(s)</li>
+                    <li>@Model.PublicPolls.Photography vote(s)</li>
+                    <li>@Model.PublicPolls.Weather vote(s)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
