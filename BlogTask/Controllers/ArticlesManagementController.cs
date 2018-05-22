@@ -148,7 +148,10 @@ namespace BlogTask.Controllers
                 var tagsInArticle = repo.Hashtags(article);
                 foreach (var tag in tagsInArticle)
                 {
-                    tags.Add(tag.HashtagWord);
+                    if (!tags.Contains(tag.HashtagWord))
+                    {
+                        tags.Add(tag.HashtagWord);
+                    }
                 }
             }
 
