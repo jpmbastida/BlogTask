@@ -19,6 +19,7 @@ namespace BlogTask.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: ArticlesManagement
+        [ActionName("Admin")]
         public ActionResult Index()
         {
             List<Article> articles = new List<Article>();
@@ -70,7 +71,7 @@ namespace BlogTask.Controllers
             {
                 db.Articles.Add(article);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
 
             return View(article);
@@ -102,7 +103,7 @@ namespace BlogTask.Controllers
             {
                 db.Entry(article).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             return View(article);
         }
@@ -134,7 +135,7 @@ namespace BlogTask.Controllers
             }
 
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin");
         }
 
         [HttpGet]

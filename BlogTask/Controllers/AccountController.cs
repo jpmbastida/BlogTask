@@ -72,7 +72,7 @@ namespace BlogTask.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "ArticlesManagement");
+                    return RedirectToAction("Admin", "ArticlesManagement");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

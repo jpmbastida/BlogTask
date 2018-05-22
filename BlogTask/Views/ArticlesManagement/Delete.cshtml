@@ -46,12 +46,12 @@
 
     </dl>
 
-    @using (Html.BeginForm("Admin", "ArticlesManagement", FormMethod.Get)) {
+    @using (Html.BeginForm("Delete", "ArticlesManagement", FormMethod.Post)) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Admin")
         </div>
     }
 </div>
