@@ -19,6 +19,7 @@ namespace BlogTask.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: ArticlesManagement
+        [ActionName("Admin")]
         public ActionResult Index()
         {
             List<Article> articles = new List<Article>();
