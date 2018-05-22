@@ -9,7 +9,6 @@ namespace Blog.Entities.Articles
     /// </summary>
     public class Article : BaseEntity
     {
-        [Required]
         public string ArticleTitle { get; set; }
 
         [Column(TypeName = "VARCHAR")]

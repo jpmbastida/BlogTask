@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201805221009500_Validations.Designer.cs">
       <DependentUpon>201805221009500_Validations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805221224044_ReturnTo.cs" />
+    <Compile Include="Migrations\201805221224044_ReturnTo.Designer.cs">
+      <DependentUpon>201805221224044_ReturnTo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ArticlesRepository.cs" />
     <Compile Include="Context\BlogContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -143,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805221009500_Validations.resx">
       <DependentUpon>201805221009500_Validations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805221224044_ReturnTo.resx">
+      <DependentUpon>201805221224044_ReturnTo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
