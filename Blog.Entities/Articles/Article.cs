@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace Blog.Entities.Articles
 {
@@ -11,6 +12,7 @@ namespace Blog.Entities.Articles
     {
         public string ArticleTitle { get; set; }
 
+        [AllowHtml]
         [Column(TypeName = "VARCHAR")]
         public string ArticleBody { get; set; }
 
