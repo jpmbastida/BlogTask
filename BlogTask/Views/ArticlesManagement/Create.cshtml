@@ -7,7 +7,7 @@
 
 <h1>Create Article</h1>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Admin", "ArticlesManagement", FormMethod.Get))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
