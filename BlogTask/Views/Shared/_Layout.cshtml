@@ -14,19 +14,20 @@
         <div class="container">@RenderBody()</div><!--
         -->
         <div id="nav">
+            <a href="~/ArticlesManagement/Index" class="button-poll button-poll-background">Adtministration</a>
             @using (Html.BeginForm("Index", "Home"))
-            { 
-                <button id="button-main"class="button button-background">Main page</button>
-            }
+    {
+        <button id="button-main" class="button button-background">Main page</button>
+}
             @using (Html.BeginForm("Index", "Comments", FormMethod.Get))
-            {
-                <button id="button-visitors" class="button button-background">Visitor's Blog</button>
-            }
+    {
+        <button id="button-visitors" class="button button-background">Visitor's Blog</button>
+}
             @using (Html.BeginForm("Index", "Poll", FormMethod.Get))
-            {
-                <button id="button-poll" class="button button-background">Opinion poll</button>
-            }
-            @RenderSection("Poll",false)
+    {
+        <button id="button-poll" class="button button-background">Opinion poll</button>
+}
+            @RenderSection("Poll", false)
         </div>
 
     </div>

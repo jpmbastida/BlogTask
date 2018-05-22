@@ -19,5 +19,7 @@ namespace Blog.Entities.Articles.ViewModels
 
         [Display(Name = "Article")]
         public string ArticleBody { get; set; }
+
+        public string Tags { get; set; }
     }
 }

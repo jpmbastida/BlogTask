@@ -1,0 +1,62 @@
+﻿@model Blog.Entities.Articles.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Article</h4>
+    <hr />
+    <dl>
+        <dt class="label-text">
+            @Html.DisplayNameFor(model => model.ArticleTitle):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleTitle)
+        </dd>
+        <br />
+        <dt class="label-text">
+            @Html.DisplayNameFor(model => model.Author):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <br />
+        <dt class="label-text body-text">
+            @Html.DisplayNameFor(model => model.Time):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <br />
+        <dt class="label-text body-text">
+            @Html.DisplayNameFor(model => model.Tags):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <br />
+        <dt class="label-text body-text">
+            @Html.DisplayNameFor(model => model.ArticleBody):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleBody)
+        </dd>
+
+
+    </dl>
+</div>
+<br/>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<hr/>

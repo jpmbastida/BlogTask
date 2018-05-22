@@ -38,6 +38,21 @@ namespace Blog.Data.Repositories
 
         /// <summary>
         /// Usage: 
+        /// Method for obtaining all Articles.
+        /// <see cref="GetAllArticles()"/> 
+        /// </summary>
+        /// <returns>A list of ArticlesViewModel.</returns>
+        public List<Article> GetAllArticles()
+        {
+            using (var context = new BlogContext())
+            {
+                return context.Articles.ToList();
+            }
+        }
+
+
+        /// <summary>
+        /// Usage: 
         /// Method for obtaining an Article by Id.
         /// <see cref="GetArticleById(int?)"/> 
         /// </summary>
@@ -77,7 +92,17 @@ namespace Blog.Data.Repositories
         /// <returns>A list of Hashtags.</returns>
         public List<Hashtag> Hashtags(Article article)
         {
-            var tagsCounter = TagsCounter(article);
+            Dictionary<string, int> tagsCounter;
+
+            if (string.IsNullOrWhiteSpace(article.Tags))
+            {
+                tagsCounter = TagsCounter(article);
+            }
+            else
+            {
+                tagsCounter = TagsCounterInText(article);
+            }
+
             List<Hashtag> articlesAndTags = tagsCounter.Select(tag => new Hashtag
             {
                 HashtagWord = Regex.Replace(tag.Key, "#", ""),
@@ -95,6 +120,20 @@ namespace Blog.Data.Repositories
 
             Dictionary<string, int> tagsCounter = tempArticle.Split(' ')
                 .Where(word => word.StartsWith("#"))
+                .GroupBy(hashtag => hashtag)
+                .ToDictionary(group => group.Key, group => group.Count());
+
+            return tagsCounter;
+        }
+
+        private static Dictionary<string, int> TagsCounterInText(Article data)
+        {
+            var tempArticle = data.ArticleBody;
+            tempArticle = Regex.Replace(tempArticle, "[,\\.\"]", "").ToLower();
+            var tags = Regex.Replace(data.Tags, "[,\\.\"]", "").ToLower().Split(' ').ToList();
+
+            Dictionary<string, int> tagsCounter = tempArticle.Split(' ')
+                .Where(word => tags.Contains(word))
                 .GroupBy(hashtag => hashtag)
                 .ToDictionary(group => group.Key, group => group.Count());
 

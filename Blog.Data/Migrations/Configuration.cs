@@ -3,13 +3,19 @@ using System;
 using System.Data.Entity.Migrations;
 using System.Collections.Generic;
 using Blog.Entities.Articles;
+using Blog.Entities.Authentication;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Blog.Data.Migrations
 {
-
-
     internal sealed class Configuration : DbMigrationsConfiguration<Context.BlogContext>
     {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+        }
+
         protected override void Seed(Context.BlogContext context)
         {
             var articles = new List<Article>
@@ -106,6 +112,28 @@ namespace Blog.Data.Migrations
             };
             comments.ForEach(c => context.Comments.Add(c));
             context.SaveChanges();
+
+            // Initialize default identity roles
+            var store = new RoleStore<IdentityRole>(context);
+            var manager = new RoleManager<IdentityRole>(store);               
+            List<IdentityRole> identityRoles = new List<IdentityRole>();
+            identityRoles.Add(new IdentityRole() { Name = "Admin" });
+
+            foreach(IdentityRole role in identityRoles)
+            {
+                manager.Create(role);
+            }
+
+            // Initialize default Admin
+            var storeUser = new UserStore<ApplicationUser>(context);
+            var managerUser = new UserManager<ApplicationUser>(storeUser);
+            ApplicationUser admin = new ApplicationUser();
+            admin.Email = "admin@admin.com";
+            admin.UserName = "admin@admin.com";
+
+            managerUser.Create(admin, "Admin1");
+            managerUser.AddToRole(admin.Id, "Admin"); 
+            base.Seed(context);
         }
     }
 }

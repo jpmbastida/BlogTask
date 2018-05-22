@@ -1,9 +1,10 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using Blog.Entities.Articles;
+using Blog.Entities.Authentication;
 using Blog.Entities.Comments;
 using Blog.Entities.Polls;
 using Blog.Entities.PublicPolls;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Blog.Data.Context
 {
@@ -13,7 +14,7 @@ namespace Blog.Data.Context
     /// or
     /// Explicitly declare the connection string to DB
     /// </summary>
-    public class BlogContext : DbContext
+    public class BlogContext : IdentityDbContext<ApplicationUser>
     {
         /// <summary>
         /// Entities are declared here 
@@ -24,9 +25,14 @@ namespace Blog.Data.Context
         public DbSet<Polls> Polls { get; set; }
         public DbSet<PublicPoll> PublicPolls { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public BlogContext()
+            : base("BlogContext", throwIfV1Schema: false)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        public static BlogContext Create()
+        {
+            return new BlogContext();
         }
     }
 }
