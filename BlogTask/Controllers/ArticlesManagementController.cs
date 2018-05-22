@@ -19,7 +19,6 @@ namespace BlogTask.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: ArticlesManagement
-        [ActionName("Admin")]
         public ActionResult Index()
         {
             List<Article> articles = new List<Article>();
@@ -65,7 +64,7 @@ namespace BlogTask.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,ArticleTitle,ArticleBody,Author,Time,Tags")] Article article)
+        public ActionResult Create([Bind(Include = "ArticleTitle,ArticleBody,Author,Time,Tags")] Article article)
         {
             if (ModelState.IsValid)
             {
